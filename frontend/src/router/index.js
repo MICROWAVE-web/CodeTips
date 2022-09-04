@@ -1,31 +1,41 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
+import SearchView from "../views/SearchView.vue"
+import DetailView from "../views/DetailView.vue";
+
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView,
-      meta: {
-        title: 'Home'
-      }
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: AboutView,
-      meta: {
-        title: 'About'
-      }
-    }
-  ]
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes: [
+        {
+            path: '/home',
+            name: 'home',
+            component: HomeView,
+            meta: {
+                title: 'Home'
+            }
+        },
+        {
+            path: '/search',
+            name: 'search',
+            component: SearchView,
+            meta: {
+                title: 'Search'
+            }
+        },
+        {
+            path: '/tip/:TipHash',
+            name: 'detail',
+            component: DetailView,
+            meta: {
+                title: 'Detail'
+            }
+        },
+    ]
 })
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title;
-  next();
+    document.title = to.meta.title;
+    next();
 })
 
 
